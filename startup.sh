@@ -50,7 +50,7 @@ fi
 if [ -d "/var/lib/zerotier-one/moons.d" ] # check if the moons conf has generated
 then
         moon_id=$(cat /var/lib/zerotier-one/identity.public | cut -d ':' -f1)
-        echo -e "Your ZeroTier moon id is \033[0;31m$moon_id\033[0m, you could orbit moon using \033[0;31m\"zerotier-cli orbit $moon_id $moon_id\"\033[0m"
+        echo "Your ZeroTier moon id is \033[0;31m$moon_id\033[0m, you could orbit moon using \033[0;31m\"zerotier-cli orbit $moon_id $moon_id\"\033[0m"
         zerotier-one
 else
         nohup zerotier-one >/dev/null 2>&1 &
@@ -65,6 +65,6 @@ else
         mv *.moon /var/lib/zerotier-one/moons.d/
         pkill zerotier-one
         moon_id=$(cat /var/lib/zerotier-one/moon.json | grep \"id\" | cut -d '"' -f4)
-        echo -e "Your ZeroTier moon id is \033[0;31m$moon_id\033[0m, you could orbit moon using \033[0;31m\"zerotier-cli orbit $moon_id $moon_id\"\033[0m"
+        echo "Your ZeroTier moon id is \033[0;31m$moon_id\033[0m, you could orbit moon using \033[0;31m\"zerotier-cli orbit $moon_id $moon_id\"\033[0m"
         exec zerotier-one
 fi
